@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Contact | Isaac Macinas</title>
+	<link rel="icon" type="image/x-icon" href = "../favicon.ico">
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&family=PT+Serif&display=swap" rel="stylesheet">
+</head>
+
+<body>
+	<header>
+		<div class="logobanner">
+			<img src="../images/mainlogo.png" id="mainlogo">
+			<h1>Isaac Macinas</h1>
+		</div>
+		<div class="navbar">
+			<a href="../index.html">HOME</a>
+			<a href="about.html">ABOUT</a>
+			<a href="gallery.html">GALLERY</a>
+			<a href="#top-page">CONTACT</a>
+		</div>
+	</header>
+	
+	<main>
+
+		<div id="top-page" class="herobanner herocontact">
+			<h1>Let's get in touch!</h1>
+		</div>
+		
+		<div class="contactarea">
+			<div class="form-container">
+				<div class="contact-info">
+					<h2>Want to work with me?</h2>
+					<p>I'm open to create something with you! If you also have suggestions or anything you want to talk about, just leave a message here or contact me through my socials!</p>
+					<div class="icon-row">
+						<a href="https://mail.google.com/mail/?view=cm&fs=1&to=isaacmacinas@gmail.com" target="_blank" rel="noopener noreferrer">
+							<img id="gmail" src="../images/gmail.png" alt="">
+						</a>
+						<p id="email">isaacmacinas@gmail.com</p>
+
+						<a class="download" href="../files/Macinas_CV.pdf" download="Macinas_CV">
+							Download my CV
+						</a>
+					</div>
+					<div class="icon-row">
+						<a href="https://www.facebook.com/macinas.isaac" target="_blank" rel="noopener noreferrer">
+							<img id="fb" src="../images/facebook.png" alt="">
+						</a>
+						
+						<a href="https://www.instagram.com/isaacmacinas/" target="_blank" rel="noopener noreferrer">
+							<img id="ig" src="../images/instagram.png" alt="">
+						</a>
+
+						<a href="https://www.youtube.com/@isaacmacinas" target="_blank" rel="noopener noreferrer">
+							<img id="yt" src="../images/youtube.png" alt="">
+						</a>
+					</div> 
+				</div>
+				<div class="contact-form">
+					<form action="../api/contact.php" method="POST">
+						<label for="">First Name</label>
+						<input type="text" name="firstname" id="" required placeholder="First Name">
+						
+						<label for="">Last Name</label>
+						<input type="text" name="lastname" id="" required placeholder="Last Name">
+
+						<label for="">Email</label>
+						<input type="email" name="email" id="" required placeholder="example@email.com">
+
+						<label for="">Message</label>
+						<textarea name="message" id="" rows="5" required placeholder="Message..."></textarea>
+						
+						<button id="submit" type="submit">SEND</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		
+	</main>
+
+	<script>
+	function closePopup() {
+		document.getElementById("popup").style.display = "none";
+	}
+
+	// Check URL for status
+	const params = new URLSearchParams(window.location.search);
+	const status = params.get("status");
+
+	if (status === "success") {
+		document.getElementById("popup").style.display = "flex";
+		document.getElementById("popup-message").innerText = "✅ Message sent successfully!";
+	} else if (status === "error") {
+		document.getElementById("popup").style.display = "flex";
+		document.getElementById("popup-message").innerText = "❌ Failed to send message.";
+	}
+	</script>
+
+	<div id="popup" class="popup">
+		<div class="popup-content">
+			<p id="popup-message"></p>
+			<button onclick="closePopup()">OK</button>
+		</div>
+	</div>
+
+	<footer>
+		<div class="logobanner">
+			<img src="../images/mainlogo-light.png" id="mainlogo">
+			
+			<div class="credits">
+				<p>Designed and Developed by Isaac Derek N. Macinas from BSIT 2-4</p>
+			</div>
+		</div>
+		<div class="credits">
+			<p>© Copyright 2026</p>
+		</div>
+	</footer>
+</body>
+
+</html>
