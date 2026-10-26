@@ -62,19 +62,24 @@
 					</div> 
 				</div>
 				<div class="contact-form">
-					<form action="../api/contact.php" method="POST">
-						<label for="">First Name</label>
-						<input type="text" name="firstname" id="" required placeholder="First Name">
-						
-						<label for="">Last Name</label>
-						<input type="text" name="lastname" id="" required placeholder="Last Name">
+					<form id="contact-form">
+						<input type="hidden" name="access_key" value="b01e742f-ed5a-44af-a0f0-ab593ee37892">
+						<input type="hidden" name="subject" value="New Contact Form Message">
+						<input type="hidden" name="from_name" value="Portfolio Contact Form">
+						<input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
 
-						<label for="">Email</label>
-						<input type="email" name="email" id="" required placeholder="example@email.com">
+						<label for="firstname">First Name</label>
+						<input type="text" name="firstname" id="firstname" required placeholder="First Name">
 
-						<label for="">Message</label>
-						<textarea name="message" id="" rows="5" required placeholder="Message..."></textarea>
-						
+						<label for="lastname">Last Name</label>
+						<input type="text" name="lastname" id="lastname" required placeholder="Last Name">
+
+						<label for="email-input">Email</label>
+						<input type="email" name="email" id="email-input" required placeholder="example@email.com">
+
+						<label for="message">Message</label>
+						<textarea name="message" id="message" rows="5" required placeholder="Message..."></textarea>
+
 						<button id="submit" type="submit">SEND</button>
 					</form>
 				</div>
@@ -88,17 +93,39 @@
 		document.getElementById("popup").style.display = "none";
 	}
 
-	// Check URL for status
-	const params = new URLSearchParams(window.location.search);
-	const status = params.get("status");
-
-	if (status === "success") {
+	function showPopup(message) {
+		document.getElementById("popup-message").innerText = message;
 		document.getElementById("popup").style.display = "flex";
-		document.getElementById("popup-message").innerText = "✅ Message sent successfully!";
-	} else if (status === "error") {
-		document.getElementById("popup").style.display = "flex";
-		document.getElementById("popup-message").innerText = "❌ Failed to send message.";
 	}
+
+	document.getElementById("contact-form").addEventListener("submit", async (e) => {
+		e.preventDefault();
+		const form = e.target;
+		const btn = document.getElementById("submit");
+		btn.disabled = true;
+		btn.innerText = "SENDING...";
+
+		try {
+			const res = await fetch("https://api.web3forms.com/submit", {
+				method: "POST",
+				headers: { "Content-Type": "application/json", "Accept": "application/json" },
+				body: JSON.stringify(Object.fromEntries(new FormData(form)))
+			});
+			const data = await res.json();
+
+			if (data.success) {
+				showPopup("✅ Message sent successfully!");
+				form.reset();
+			} else {
+				showPopup("❌ Failed to send message.");
+			}
+		} catch (err) {
+			showPopup("❌ Failed to send message.");
+		}
+
+		btn.disabled = false;
+		btn.innerText = "SEND";
+	});
 	</script>
 
 	<div id="popup" class="popup">
