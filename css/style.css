@@ -225,7 +225,7 @@ body {
 	border-radius: 8px;
 }
 
-.videoarea, .aboutarea, .galleryarea {
+.videoarea, .aboutarea {
 	text-align: center;
 	padding: 18px;
 	align-content: center;
@@ -307,91 +307,6 @@ footer {
 	border-radius: 8px;
 	align-self: center;
 	box-shadow: 3px 4px 3px rgb(0, 0, 0, 0.1);
-}
-
-.gallerycard {
-	background-color: white;
-	border-radius: 20px;
-	padding: 20px;
-	box-shadow: 0 0 20px rgb(0, 0, 0, 0.2);
-	align-content: center;
-	align-items: center;
-	max-width: 90%;
-	max-height: 90%;
-}
-
-.gallerycard video {
-	height: 35vw;
-}
-
-.gallerycard h1 {
-	padding-bottom: 12px;
-}
-
-#PUZZLED, #coffeezip, #global {
-	
-	max-width: 26vw;
-	height: auto;
-}
-
-#APPoster {
-	max-height: 39vw;
-	width: auto;
-}
-
-#Porsche {
-	height: 36vw;
-	width: auto;
-}
-
-#canva {
-	max-height: 520px;
-	width: 800px;
-}
-
-#certificate-img {
-	height: 29vw;
-	width: auto;
-}
-
-#YTVideo1 {
-	height: 500px;
-	width: 883px;
-}
-
-#YTVideo2 {
-	height: 500px;
-	width: auto;
-}
-
-.gallerydark {
-	background-color: rgb(43, 43, 43);
-	color: white;
-	font-size: 24px;
-	align-content: center;
-	text-align: center;
-	height: 200px;
-}
-
-.centernav {
-	justify-content: center;
-	padding: 12px 0;
-}
-
-.gallerylist {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	align-items: space-evenly;
-	gap: 18px;
-}
-
-.no-bg {
-	background-color: none;
-}
-
-.galleryarea h1 {
-	padding: 0 12px;
 }
 
 .form-container {
@@ -534,6 +449,200 @@ button:hover {
 }
 
 
+/* ==========================================================================
+   Gallery
+
+   Rows are "justified": each card's width is proportional to its aspect
+   ratio (--ar, set inline in gallery.html), so every item in a row shares
+   one height and the row fills the container edge to edge. Below the row
+   breakpoints the cards simply stack, one per line.
+   ========================================================================== */
+
+/* Intro panel with the jump links */
+.gallerydark {
+	display: grid;
+	justify-items: center;
+	gap: 20px;
+	padding: clamp(32px, 6vw, 64px) 20px;
+	background-color: rgb(43, 43, 43);
+	color: white;
+	text-align: center;
+}
+
+.gallerydark h1 {
+	font-size: clamp(2rem, 1.4rem + 2.4vw, 3rem);
+	font-weight: 700;
+	letter-spacing: -0.02em;
+	line-height: 1.1;
+}
+
+.gallerydark .navbar {
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 10px;
+	padding: 0;
+	transform: none;
+}
+
+.gallerydark .navbar a {
+	min-height: 44px;
+	padding: 10px 22px;
+	background: transparent;
+	border: 1.5px solid rgba(255, 255, 255, 0.45);
+	box-shadow: none;
+	transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease, transform 200ms ease;
+}
+
+.gallerydark .navbar a:hover {
+	background: white;
+	border-color: white;
+	color: #111111;
+	font-weight: 400;
+	text-shadow: none;
+	transform: translateY(-2px);
+}
+
+.gallerydark .navbar a:focus-visible {
+	outline: 2px solid white;
+	outline-offset: 3px;
+}
+
+/* Sections: full-bleed background, content held to a 1200px measure */
+.gallery-section {
+	--gap: clamp(12px, 2vw, 24px);
+	--measure: 1200px;
+	padding-block: clamp(40px, 7vw, 88px);
+	padding-inline: max(20px, calc((100% - var(--measure)) / 2));
+	scroll-margin-top: 110px;
+}
+
+.gallery-section--light {
+	background-color: white;
+}
+
+.gallery-section--dark {
+	background-color: rgb(43, 43, 43);
+	color: white;
+}
+
+.gallery-section h2 {
+	margin-bottom: clamp(20px, 3vw, 32px);
+	padding-bottom: 0.6em;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+	font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.125rem);
+	font-weight: 700;
+	letter-spacing: -0.01em;
+	line-height: 1.15;
+	text-wrap: balance;
+}
+
+.gallery-section--dark h2 {
+	border-bottom-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Rows and cards (stacked by default, justified rows from the breakpoints below) */
+.gallerylist {
+	display: grid;
+	gap: var(--gap);
+}
+
+.gallery-row {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: var(--gap);
+}
+
+.gallerycard {
+	width: 100%;
+	min-width: 0;
+	/* stacked: never taller than ~3/4 of the screen, so a 9:16 video fits on one view */
+	max-width: min(100%, calc(var(--ar) * 75vh));
+	max-width: min(100%, calc(var(--ar) * 75svh));
+	margin-inline: auto;
+	overflow: hidden;
+	border-radius: 10px;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 10px 28px rgba(0, 0, 0, 0.14);
+}
+
+.gallery-section--dark .gallerycard {
+	box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 14px 36px rgba(0, 0, 0, 0.45);
+}
+
+.gallerycard img,
+.gallerycard video {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+.gallerycard video {
+	aspect-ratio: var(--ar);
+	object-fit: contain;
+	background-color: #000000;
+}
+
+/* Images and certificates: justified rows from 560px up */
+@media (min-width: 560px) {
+	.gallery-row--photo {
+		flex-direction: row;
+	}
+
+	.gallery-row--photo > .gallerycard {
+		flex-grow: calc(var(--ar));
+		flex-shrink: 1;
+		flex-basis: 0%;
+		max-width: none;
+		margin-inline: 0;
+	}
+}
+
+/* Videos need more room for their controls, so they stack a little longer */
+@media (min-width: 800px) {
+	.gallery-row--video {
+		flex-direction: row;
+	}
+
+	.gallery-row--video > .gallerycard {
+		flex-grow: calc(var(--ar));
+		flex-shrink: 1;
+		flex-basis: 0%;
+		max-width: none;
+		margin-inline: 0;
+	}
+}
+
+/* One quiet moment: images lift on hover. Videos stay put so the controls don't move. */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+	.gallerycard:has(> img) {
+		transition: transform 450ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 450ms cubic-bezier(0.16, 1, 0.3, 1);
+	}
+
+	.gallerycard:has(> img):hover {
+		transform: translateY(-4px);
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 18px 40px rgba(0, 0, 0, 0.22);
+	}
+}
+
+/* The sticky header is taller once it stacks, so jump links need more clearance */
+@media (max-width: 768px) {
+	.gallery-section {
+		scroll-margin-top: 180px;
+	}
+}
+
+/* Small phones: keep the three jump links on one line */
+@media (max-width: 480px) {
+	.gallerydark {
+		padding-inline: 12px;
+	}
+
+	.gallerydark .navbar a {
+		min-width: 0;
+		padding: 10px 14px;
+	}
+}
+
 /* Media Query */
 
 /* Laptop */
@@ -551,46 +660,8 @@ button:hover {
 		font-size: 18px;
 	}
 
-	#PUZZLED, #coffeezip, #global{
-		width: 24vw;
-		height: auto;
-	}
-
-	#Porsche {
-		width: 51vw;
-		height: auto;
-	}
-
-	#canva {
-		max-height: 300px;
-		max-width: 500px;
-	}
-
-	#APPoster {
-		max-width: 25vw;
-		height: auto;
-	}
-
 	.aboutimg {
 		max-width: 50%;
-	}
-
-	#certificate-img {
-		max-width: 40vw;
-	}
-
-	.gallerycard video {
-		height: 32vw;
-	}
-
-	#YTVideo1 {
-	height: 327px;
-	width: 582px;
-	}
-
-	#YTVideo2 {
-		height: 327px;
-		width: 184px;
 	}
 
 }
@@ -603,10 +674,6 @@ button:hover {
 
 	.navbar {
 		padding-bottom: 14px;
-	}
-
-	.centernav {
-		display: flex;
 	}
 
 	.logobanner {
@@ -640,7 +707,7 @@ button:hover {
 		width: 60px;
 	}
 
-	.videoarea, .aboutarea, .galleryarea {
+	.videoarea, .aboutarea {
 		text-align: center;
 		padding: 18px;
 		align-content: center;
@@ -666,42 +733,8 @@ button:hover {
 		max-width: 90%;
 	}
 
-	#CCC {
-		height: 300px;
-		width: auto;
-	}
-
-	.gallerycard {
-		height: auto;
-		padding: 20px;
-	}
-	
-	.gallerycard img, .gallerycard video {
-		width: 100% !important;
-		max-width: 550px !important;
-		height: 100% !important;
-		max-height: fit-content !important;
-		box-shadow: 3px 4px 3px rgb(0, 0, 0, 0.1);
-	}
-
-	.gallerylist {
-		flex-direction: column;
-		align-items: center;
-	}
-
-
-	#canva {
-		max-width: 550px;
-		max-height: 450px;
-	}
-
 	.order-first {
 		order: -1;
-	}
-
-	#YTVideo2 {
-		height: 500px;
-		width: auto;
 	}
 
 	
@@ -740,20 +773,6 @@ button:hover {
 	}
 	.abouttext {
 		padding: 4px 0;
-	}
-
-	#canva {
-		width: 250px;
-		height: 200px;
-	}
-
-	#YTVideo1 {
-	height: 130px;
-	width: 250px;
-	}
-
-	#YTVideo2 {
-		width: 250px;
 	}
 
 	.form-container {
