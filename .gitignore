@@ -1,0 +1,7 @@
+# Secrets and local tooling
+.env
+.env.*
+!.env.example
+.vercel
+node_modules
+.DS_Store
