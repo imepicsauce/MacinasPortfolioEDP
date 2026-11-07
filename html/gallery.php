@@ -1,31 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-	<title>Gallery | Isaac Macinas</title>
-	<link rel="icon" type="image/x-icon" href = "../favicon.ico">
-	<link rel="stylesheet" href="../css/style.css">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&family=PT+Serif&display=swap" rel="stylesheet">
-</head>
-
-<body>
-	<header>
-		<div class="logobanner">
-			<img src="../images/mainlogo.png" id="mainlogo">
-			<h1>Isaac Macinas</h1>
-		</div>
-		<div class="navbar">
-			<a href="../index.html">HOME</a>
-			<a href="about.html">ABOUT</a>
-			<a href="#top-page">GALLERY</a>
-			<a href="contact.html">CONTACT</a>
-		</div>
-	</header>
-	
+<?php
+$title = 'Gallery';
+$page  = 'gallery';
+$base  = '../';
+$scripts = ['js/projects.js']; // loaded after the footer
+require __DIR__ . '/../includes/header.php';
+?>
 	<main>
 		<div id="top-page" class="herobanner herogallery">
 			<h1>My Works</h1>
@@ -120,19 +99,4 @@
 
 </main>
 
-	<footer>
-		<div class="logobanner">
-			<img src="../images/mainlogo-light.png" id="mainlogo">
-			
-			<div class="credits">
-				<p>Designed and Developed by Isaac Derek N. Macinas from BSIT 2-4</p>
-			</div>
-		</div>
-		<div class="credits">
-			<p>© Copyright 2026</p>
-		</div>
-	</footer>
-	<script src="../js/projects.js"></script>
-</body>
-
-</html>
+<?php require __DIR__ . '/../includes/footer.php'; ?>

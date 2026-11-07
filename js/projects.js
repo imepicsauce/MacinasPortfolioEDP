@@ -6,7 +6,7 @@
 
      title        Project name
      description  One or two sentences
-     image        Path to a screenshot, relative to html/gallery.html.
+     image        Path to a screenshot, relative to html/gallery.php.
                   3:2 landscape (e.g. 960 x 640) fits the card best.
      imageAlt     What the screenshot shows, for screen readers
      tags         Short labels for the tech used

@@ -89,32 +89,42 @@ header h1 {
 	height: 300px;
 	text-align: center;
 	align-content: center;
-	background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(0,0,0,0)), url(../images/heroimg.jpg);
+	background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(0,0,0,0)), linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url(../images/heroimg.jpg);
 	background-position: 50% 43%;
 	background-size: cover;
 }
 
 .heroabout {
-	background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(0,0,0,0)), url(../images/heroabout.jpg);
+	background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(0,0,0,0)), linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url(../images/heroabout.jpg);
 	background-position: 50% 43%;
 }
 
 .herogallery {
-	background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(0,0,0,0)), url(../images/herogallery.jpg);
+	background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(0,0,0,0)), linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url(../images/herogallery.jpg);
 	background-position: 50% 43%;
 }
 
 .herocontact {
-	background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(0,0,0,0)), url(../images/herocontact.jpg);
+	background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(0,0,0,0)), linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url(../images/herocontact.jpg);
 	background-position: 50% 43%;
 }
 
 .herobanner h1 {
 	font-size: 48px;
-	color: aliceblue;
-	text-shadow: 2px 2px 96px #000000;
+	color: #ffffff;
+	text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+	padding: 0 16px;
 	opacity: 0;                 
-  	animation: fadeIn 2s ease forwards; 
+  	animation: fadeIn 0.8s ease forwards; 
+}
+
+.herobanner .hero-sub {
+	color: #ffffff;
+	font-family: inherit;
+	font-size: 20px;
+	font-weight: 400;
+	text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+	padding: 8px 16px 0;
 }
 
 @keyframes fadeIn {
@@ -160,15 +170,15 @@ body {
 
 	opacity: 0;
 	transform: translateY(20px); /* start slightly lower */
-	animation: fadeUp 2s ease forwards;
+	animation: fadeUp 0.7s ease forwards;
 }
 
 .mainintro h1 {
 	font-size: 72px;
 	opacity: 0;
 	transform: translateY(20px); /* start slightly lower */
-	animation: fadeUp 2s ease forwards;
-	animation-delay: 0.5s;
+	animation: fadeUp 0.7s ease forwards;
+	animation-delay: 0.1s;
 }
 
 .mainintro p {
@@ -177,8 +187,8 @@ body {
 	font-size: 24px;
 	
 	opacity: 0;
-	animation: fadeIn 2s ease forwards;
-	animation-delay: 1.3s; 
+	animation: fadeIn 0.7s ease forwards;
+	animation-delay: 0.2s;
 
 }
 
@@ -217,6 +227,45 @@ body {
 	font-size: 18px;
 	padding: 12px;
 	max-width: 90%;	
+}
+
+.cta-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	padding: 12px;
+}
+
+.cta-row a {
+	box-sizing: border-box;
+	min-height: 44px;
+	padding: 10px 22px;
+	display: inline-flex;
+	align-items: center;
+	border-radius: 200px;
+	font-size: 16px;
+	text-decoration: none;
+	color: #111111;
+	background: aliceblue;
+	border: 2px solid aliceblue;
+}
+
+.cta-row a + a {
+	color: aliceblue;
+	background: transparent;
+}
+
+.cta-row a:hover, .cta-row a:focus-visible {
+	background: #ffffff;
+	color: #111111;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.herobanner h1, .mainintro h4, .mainintro h1, .mainintro p {
+		animation: none;
+		opacity: 1;
+		transform: none;
+	}
 }
 
 #macinas_main {
@@ -453,7 +502,7 @@ button:hover {
    Gallery
 
    Rows are "justified": each card's width is proportional to its aspect
-   ratio (--ar, set inline in gallery.html), so every item in a row shares
+   ratio (--ar, set inline in gallery.php), so every item in a row shares
    one height and the row fills the container edge to edge. Below the row
    breakpoints the cards simply stack, one per line.
    ========================================================================== */
