@@ -41,6 +41,9 @@ require __DIR__ . '/../includes/header.php';
 				</div>
 				<div class="contact-form">
 					<form id="contact-form">
+						<input type="hidden" name="access_key" value="b01e742f-ed5a-44af-a0f0-ab593ee37892">
+						<input type="hidden" name="subject" value="New Contact Form Message">
+						<input type="hidden" name="from_name" value="Portfolio Contact Form">
 						<input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
 
 						<label for="firstname">First Name</label>
@@ -81,7 +84,7 @@ require __DIR__ . '/../includes/header.php';
 		btn.innerText = "SENDING...";
 
 		try {
-			const res = await fetch("../send.php", {
+			const res = await fetch("https://api.web3forms.com/submit", {
 				method: "POST",
 				headers: { "Content-Type": "application/json", "Accept": "application/json" },
 				body: JSON.stringify(Object.fromEntries(new FormData(form)))
@@ -92,7 +95,7 @@ require __DIR__ . '/../includes/header.php';
 				showPopup("✅ Message sent successfully!");
 				form.reset();
 			} else {
-				showPopup("❌ " + (data.message || "Failed to send message."));
+				showPopup("❌ Failed to send message.");
 			}
 		} catch (err) {
 			showPopup("❌ Failed to send message.");
