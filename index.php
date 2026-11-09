@@ -19,7 +19,7 @@ require __DIR__ . '/includes/header.php';
 					<h1>Isaac Macinas</h1>
 				</div>
 				<div class="intro-description">
-					<p>I'm an IT student at Pamantasan ng Lungsod ng Valenzuela who makes posters, video edits and music, and builds the tools to go with them. Got a project? Let's make it.</p>
+					<p>I'm an IT student at Pamantasan ng Lungsod ng Valenzuela who makes graphic designs, video edits and music, and builds the tools to go with them. Got a project? Let's make it.</p>
 				</div>
 				<div class="cta-row">
 					<a href="#demoreel">Watch the reel</a>
