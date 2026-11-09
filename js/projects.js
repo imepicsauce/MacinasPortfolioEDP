@@ -16,6 +16,21 @@ const PROJECTS = [
 			{ label: "Live demo", url: "https://imepicsauce.github.io/tablebench/" },
 			{ label: "View on GitHub", url: "https://github.com/imepicsauce/tablebench" }
 		]
+	},
+	{
+		title: "DewIt",
+		description:
+			"A calm, simple to-do app. Add, edit and complete tasks, filter by " +
+			"what is left or done, and undo a mistake. Tasks are saved in your " +
+			"browser, and a built-in player loads a YouTube link as a focus " +
+			"soundtrack while you work.",
+		image: "../images/dewit.jpg",
+		imageAlt:
+			"DewIt: a task list with one completed item on the left and a focus soundtrack player on the right",
+		tags: ["HTML", "CSS", "JavaScript"],
+		links: [
+			{ label: "View on GitHub", url: "https://github.com/imepicsauce/Dewit" }
+		]
 	}
 ];
 
