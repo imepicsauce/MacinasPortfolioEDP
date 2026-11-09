@@ -1,15 +1,6 @@
 <?php
-/**
- * Front door for Vercel. vercel.json sends every page request here, and this
- * file loads the matching page. Static files (css, js, images, files) are
- * served by Vercel directly and never reach this script.
- *
- * To add a page: create the .php file, then add one line to $pages below
- * (and one to $nav in includes/header.php).
- */
 $root = dirname(__DIR__);
 
-// URL path => page file. Only pages listed here can be opened.
 $pages = [
 	'/'                  => 'index.php',
 	'/index.php'         => 'index.php',

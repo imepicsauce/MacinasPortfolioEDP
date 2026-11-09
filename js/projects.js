@@ -1,20 +1,4 @@
-/* ==========================================================================
-   Projects (shown on the Gallery page)
-
-   To add a project, copy one { ... } block in PROJECTS, paste it after the
-   last one (keep a comma between blocks) and edit the text:
-
-     title        Project name
-     description  One or two sentences
-     image        Path to a screenshot, relative to html/gallery.php.
-                  3:2 landscape (e.g. 960 x 640) fits the card best.
-     imageAlt     What the screenshot shows, for screen readers
-     tags         Short labels for the tech used
-     links        Buttons: { label: "...", url: "..." }. The first one is the
-                  main button; later ones are drawn as outlined buttons.
-
-   Cards appear in the same order as this list.
-   ========================================================================== */
+/* Projects (shown on the Gallery page) */
 
 const PROJECTS = [
 	{
@@ -35,15 +19,10 @@ const PROJECTS = [
 	}
 ];
 
-/* --------------------------------------------------------------------------
-   Rendering. You shouldn't need to edit anything below this line.
-   -------------------------------------------------------------------------- */
-
 (function renderProjects() {
 	const list = document.getElementById("project-list");
 	if (!list) return;
 
-	// Builds an element and sets its text safely (no HTML is parsed).
 	function make(tag, className, text) {
 		const node = document.createElement(tag);
 		if (className) node.className = className;
