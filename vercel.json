@@ -1,6 +1,9 @@
 {
   "functions": {
-    "api/index.php": { "runtime": "vercel-php@0.7.3" }
+    "api/index.php": {
+      "runtime": "vercel-php@0.7.3",
+      "excludeFiles": "{images,css,js,files,.git}/**"
+    }
   },
   "routes": [
     { "src": "/(css|js|images|files)/(.*)", "dest": "/$1/$2" },
