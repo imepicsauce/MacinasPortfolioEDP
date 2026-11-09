@@ -14,7 +14,7 @@ $scripts = $scripts ?? [];
 			<img src="<?= $base ?>images/mainlogo-light.png" id="mainlogo">
 
 			<div class="credits">
-				<p>Designed and Developed by Isaac Derek N. Macinas from BSIT 2-4</p>
+				<p>Designed and Developed by Isaac Derek N. Macinas from BSIT 3-4</p>
 			</div>
 		</div>
 		<div class="credits">
