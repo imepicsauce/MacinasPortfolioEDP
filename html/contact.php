@@ -66,15 +66,41 @@ require __DIR__ . '/../includes/header.php';
 		
 	</main>
 
+	<div id="popup" class="popup">
+		<div class="popup-content" role="alertdialog" aria-modal="true" aria-labelledby="popup-title" aria-describedby="popup-message">
+			<div class="popup-icon" aria-hidden="true">
+				<svg class="icon-success" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+				<svg class="icon-error" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+			</div>
+			<h2 id="popup-title"></h2>
+			<p id="popup-message"></p>
+			<button type="button" onclick="closePopup()">OK</button>
+		</div>
+	</div>
+
 	<script>
+	const popup = document.getElementById("popup");
+
 	function closePopup() {
-		document.getElementById("popup").style.display = "none";
+		popup.classList.remove("open");
+		document.getElementById("submit").focus();
 	}
 
-	function showPopup(message) {
-		document.getElementById("popup-message").innerText = message;
-		document.getElementById("popup").style.display = "flex";
+	function showPopup(ok, title, message) {
+		popup.classList.toggle("is-error", !ok);
+		document.getElementById("popup-title").textContent = title;
+		document.getElementById("popup-message").textContent = message;
+		popup.classList.add("open");
+		popup.querySelector("button").focus();
 	}
+
+	popup.addEventListener("click", (e) => {
+		if (e.target === popup) closePopup();
+	});
+
+	document.addEventListener("keydown", (e) => {
+		if (e.key === "Escape" && popup.classList.contains("open")) closePopup();
+	});
 
 	document.getElementById("contact-form").addEventListener("submit", async (e) => {
 		e.preventDefault();
@@ -92,13 +118,13 @@ require __DIR__ . '/../includes/header.php';
 			const data = await res.json();
 
 			if (data.success) {
-				showPopup("✅ Message sent successfully!");
+				showPopup(true, "Message sent", "Thanks for reaching out. I'll get back to you soon.");
 				form.reset();
 			} else {
-				showPopup("❌ Failed to send message.");
+				showPopup(false, "Message not sent", "Something went wrong on the way. Please try again in a moment.");
 			}
 		} catch (err) {
-			showPopup("❌ Failed to send message.");
+			showPopup(false, "Message not sent", "Something went wrong on the way. Please try again in a moment.");
 		}
 
 		btn.disabled = false;
@@ -106,11 +132,5 @@ require __DIR__ . '/../includes/header.php';
 	});
 	</script>
 
-	<div id="popup" class="popup">
-		<div class="popup-content">
-			<p id="popup-message"></p>
-			<button onclick="closePopup()">OK</button>
-		</div>
-	</div>
 
 <?php require __DIR__ . '/../includes/footer.php'; ?>

@@ -134,6 +134,7 @@ header h1 {
 }
 
 body {
+	margin: clamp(8px, 2vw, 24px);
 	background-color: #e4e4e4;
 }
 
@@ -473,28 +474,115 @@ button:hover {
 }
 
 .popup {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.6);
-    justify-content: center;
-    align-items: center;
+	position: fixed;
+	inset: 0;
+	z-index: 2000;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 20px;
+	background: rgba(0, 0, 0, 0.6);
+	backdrop-filter: blur(4px);
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.2s ease, visibility 0s linear 0.2s;
+}
+
+.popup.open {
+	opacity: 1;
+	visibility: visible;
+	transition-delay: 0s;
 }
 
 .popup-content {
-    background: white;
-    padding: 20px 30px;
-    border-radius: 10px;
-    text-align: center;
+	box-sizing: border-box;
+	width: 100%;
+	max-width: 400px;
+	padding: 32px 28px 28px;
+	border-radius: 20px;
+	background: white;
+	text-align: center;
+	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+	transform: translateY(12px) scale(0.97);
+	transition: transform 0.25s ease;
+}
+
+.popup.open .popup-content {
+	transform: none;
+}
+
+.popup-icon {
+	width: 64px;
+	height: 64px;
+	margin: 0 auto 16px;
+	padding: 16px;
+	box-sizing: border-box;
+	border-radius: 50%;
+	color: #1a7f37;
+	background: #e3f6e8;
+}
+
+.popup-icon svg {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.popup-icon .icon-error {
+	display: none;
+}
+
+.popup.is-error .popup-icon {
+	color: #c62828;
+	background: #fdeaea;
+}
+
+.popup.is-error .icon-success {
+	display: none;
+}
+
+.popup.is-error .icon-error {
+	display: block;
+}
+
+.popup-content h2 {
+	margin-bottom: 8px;
+	font-size: 22px;
+	font-weight: 600;
+	color: #111111;
+}
+
+.popup-content p {
+	font-size: 16px;
+	line-height: 1.5;
+	color: #444444;
 }
 
 .popup-content button {
-    margin-top: 10px;
-    padding: 8px 16px;
-    cursor: pointer;
+	box-sizing: border-box;
+	min-width: 120px;
+	min-height: 44px;
+	margin-top: 24px;
+	padding: 10px 28px;
+	border: 2px solid #111111;
+	border-radius: 200px;
+	background: #111111;
+	color: white;
+	font-size: 16px;
+	cursor: pointer;
+	transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.popup-content button:hover,
+.popup-content button:focus-visible {
+	background: white;
+	color: #111111;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.popup, .popup-content {
+		transition: none;
+	}
 }
 
 
