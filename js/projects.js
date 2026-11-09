@@ -21,7 +21,7 @@ const PROJECTS = [
 		title: "DewIt",
 		description:
 			"A calm, simple to-do app. Add, edit and complete tasks, filter by " +
-			"what is left or done, and undo a mistake. Tasks are saved in your " +
+			"what is left or done, and undo a mistake. Tasks are saved locally in your " +
 			"browser, and a built-in player loads a YouTube link as a focus " +
 			"soundtrack while you work.",
 		image: "../images/dewit.jpg",
