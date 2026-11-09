@@ -79,7 +79,7 @@ header h1 {
 	border-radius: 200px;
 	font-size: 15px;
 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-
+ 
 	transition: all;
 	transition-duration: 200ms;
 	transition-timing-function: ease;
