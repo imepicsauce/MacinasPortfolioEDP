@@ -134,14 +134,13 @@ header h1 {
 }
 
 body {
-	padding: 0 clamp(8px, 2vw, 24px);
 	background-color: #e4e4e4;
 }
 
 .landing {
 	display: flex;
 	justify-content: space-evenly;
-	padding: 12px;
+	padding: 12px clamp(12px, 3vw, 40px);
 	background-color: rgb(43, 43, 43);
 }
 
@@ -320,6 +319,7 @@ footer {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	padding: 0 clamp(12px, 3vw, 40px);
 }
 
 .credits {
