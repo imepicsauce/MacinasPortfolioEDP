@@ -13,6 +13,6 @@
 1. Install and run xampp v3.3.0. Download from apachefriends.org and install it.
 2. Enable Apache service on the control panel.
 3. Download the project zip file from https://github.com/imepicsauce/MacinasPortfolioEDP/tree/vercel-php-restructure
-4. Extract the zip and put the project in the `htdocs` folder. The directory must be `C:\xampp\htdocs\MacinasPortfolioEDP`
+4. Extract the zip and put the project in the `htdocs` folder. The directory must be `C:\xampp\htdocs\MacinasPortfolioEDP`. If you're reading this from the ZIP, copy this whole folder to the directory.
 5. Open your browser. Type `localhost/MacinasPortfolioEDP` on the address bar.
 6. You are now done. The portfolio should now appear in your browser. Enjoy checking it out!
